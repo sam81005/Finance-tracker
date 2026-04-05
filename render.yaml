@@ -2,6 +2,7 @@ services:
   - type: web
     name: expensepilot-web
     runtime: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn wsgi:app
     envVars:
@@ -12,3 +13,4 @@ services:
 
 databases:
   - name: expensepilot-db
+    plan: free
