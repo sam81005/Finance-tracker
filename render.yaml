@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: expensepilot-web
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn wsgi:app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: expensepilot-db
+          property: connectionString
+
+databases:
+  - name: expensepilot-db
